@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 13966, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: Pocetnitest
+  m_EditorClassIdentifier: 
+  templateScene: {fileID: 102900000, guid: 9fc0d4010bbf28b4594072e72b8655ab, type: 3}
+  templateName: 
+  description: 
+  preview: {fileID: 0}
+  dependencies:
+  - dependency: {fileID: 2800000, guid: e4f97225bcfb64760a1c81f460837f01, type: 3}
+    instantiationMode: 1
+  - dependency: {fileID: 3793398452023108071, guid: b95001b5cd7071d40b6878c7e26c1b2a, type: 3}
+    instantiationMode: 0
+  - dependency: {fileID: 2100000, guid: 082e64cee04ebeb428eb74f24e0ffbc5, type: 2}
+    instantiationMode: 0
+  - dependency: {fileID: 3793398452023108071, guid: c469631b06d0cbe47b45f3c45a63f5da, type: 3}
+    instantiationMode: 0
+  - dependency: {fileID: 2100000, guid: 41add81aa3354cd40908c8928787e706, type: 2}
+    instantiationMode: 0
+  - dependency: {fileID: 23800000, guid: 9022ac09a7e7a754eb4caec7861ae075, type: 2}
+    instantiationMode: 0
+  - dependency: {fileID: 5269270150028149660, guid: 4358e8b2bb358c241a08cde1bc5a8b6f, type: 3}
+    instantiationMode: 0
+  - dependency: {fileID: 23800000, guid: 9e40d65ecf3ef2e4eb1b87ebbce008c9, type: 2}
+    instantiationMode: 0
+  templatePipeline: {fileID: 0}
+  badge: {fileID: 0}
+  addToDefaults: 0
