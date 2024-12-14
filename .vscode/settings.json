@@ -51,5 +51,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "projekttest.sln"
+    "dotnet.defaultSolution": "ISS-projekt.sln"
 }
