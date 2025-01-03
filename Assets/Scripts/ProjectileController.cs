@@ -18,6 +18,7 @@ namespace BigRookGames.Weapons
 
         // --- Script Variables ---
         private bool targetHit;
+        private Vector3 initialDirection;
 
         // --- Audio ---
         public AudioSource inFlightAudioSource;
@@ -25,16 +26,20 @@ namespace BigRookGames.Weapons
         // --- VFX ---
         public ParticleSystem disableOnHit;
 
+        private void Start()
+        {
+            // Spremi početnu orijentaciju rakete
+            initialDirection = transform.forward;
+        }
 
         private void Update()
         {
             // --- Check to see if the target has been hit. We don't want to update the position if the target was hit ---
             if (targetHit) return;
 
-            // --- moves the game object in the forward direction at the defined speed ---
-            transform.position += transform.forward * (speed * Time.deltaTime);
+            // --- Moves the game object in the initial forward direction at the defined speed ---
+            transform.position += initialDirection * (speed * Time.deltaTime);
         }
-
 
         /// <summary>
         /// Explodes on contact.
@@ -50,17 +55,15 @@ namespace BigRookGames.Weapons
             projectileMesh.enabled = false;
             targetHit = true;
             inFlightAudioSource.Stop();
-            foreach(Collider col in GetComponents<Collider>())
+            foreach (Collider col in GetComponents<Collider>())
             {
                 col.enabled = false;
             }
             disableOnHit.Stop();
 
-
             // --- Destroy this object after 2 seconds. Using a delay because the particle system needs to finish ---
             Destroy(gameObject, 5f);
         }
-
 
         /// <summary>
         /// Instantiates an explode object.
@@ -69,8 +72,6 @@ namespace BigRookGames.Weapons
         {
             // --- Instantiate new explosion option. I would recommend using an object pool ---
             GameObject newExplosion = Instantiate(rocketExplosion, transform.position, rocketExplosion.transform.rotation, null);
-
-
         }
     }
 }
