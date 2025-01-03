@@ -36,6 +36,14 @@ namespace BigRookGames.Weapons
         // --- Timing ---
         [SerializeField] private float timeLastFired;
 
+        public GameObject scopeOverlay;
+        public GameObject aimCrosshair;
+        private bool isScoped = false;
+        public GameObject weaponCamera;
+        public Camera mainCamera;
+        public float scopedFOV = 30f;
+        private float normalFOV;
+
 
         private void Start()
         {
@@ -53,8 +61,26 @@ namespace BigRookGames.Weapons
                                                                         + rotationSpeed, transform.localEulerAngles.z);
             }
 
+            if (Input.GetButtonDown("Fire2"))
+            {
+                isScoped = !isScoped;
+                scopeOverlay.SetActive(isScoped);
+                aimCrosshair.SetActive(!isScoped);
+                weaponCamera.SetActive(!isScoped);
+
+                if (isScoped)
+                {
+                    normalFOV = mainCamera.fieldOfView;
+                    mainCamera.fieldOfView = scopedFOV;
+                }
+                else
+                {
+                    mainCamera.fieldOfView = normalFOV;
+                }
+            }
+
             // --- Fires the weapon if the delay time period has passed since the last shot ---
-            if (Input.GetButtonDown("Fire1") && ((timeLastFired + shotDelay) <= Time.time))
+            if (Input.GetButtonDown("Fire1") && ((timeLastFired + shotDelay) <= Time.time) && isScoped)
             {
                 FireWeapon();
             }
