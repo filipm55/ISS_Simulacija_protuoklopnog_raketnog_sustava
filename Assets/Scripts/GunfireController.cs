@@ -21,11 +21,6 @@ namespace BigRookGames.Weapons
         public bool rotate = true;
         public float rotationSpeed = .25f;
 
-        // --- Options ---
-        public GameObject scope;
-        public bool scopeActive = true;
-        private bool lastScopeState;
-
         // --- Projectile ---
         [Tooltip("The projectile gameobject to instantiate each time the weapon is fired.")]
         public GameObject projectilePrefab;
@@ -36,12 +31,12 @@ namespace BigRookGames.Weapons
         // --- Timing ---
         [SerializeField] private float timeLastFired;
 
+
+        //scope
         public GameObject scopeOverlay;
-        public GameObject aimCrosshair;
         private bool isScoped = false;
-        public GameObject weaponCamera;
         public Camera mainCamera;
-        public float scopedFOV = 30f;
+        public float scopedFOV = 10f;
         private float normalFOV;
 
 
@@ -49,7 +44,6 @@ namespace BigRookGames.Weapons
         {
             if(source != null) source.clip = GunShotClip;
             timeLastFired = 0;
-            lastScopeState = scopeActive;
         }
 
         private void Update()
@@ -65,8 +59,6 @@ namespace BigRookGames.Weapons
             {
                 isScoped = !isScoped;
                 scopeOverlay.SetActive(isScoped);
-                aimCrosshair.SetActive(!isScoped);
-                weaponCamera.SetActive(!isScoped);
 
                 if (isScoped)
                 {
@@ -82,15 +74,13 @@ namespace BigRookGames.Weapons
             // --- Fires the weapon if the delay time period has passed since the last shot ---
             if (Input.GetButtonDown("Fire1") && ((timeLastFired + shotDelay) <= Time.time) && isScoped)
             {
+                mainCamera.fieldOfView = normalFOV;
+                scopeOverlay.SetActive(false);
                 FireWeapon();
             }
 
-            // --- Toggle scope based on public variable value ---
-            if(scope && lastScopeState != scopeActive)
-            {
-                lastScopeState = scopeActive;
-                scope.SetActive(scopeActive);
-            }
+            
+
         }
 
         /// <summary>
