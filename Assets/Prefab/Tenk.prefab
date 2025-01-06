@@ -90,7 +90,11 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: b27a74c7df6d4f642b0b3245957d92a1, type: 2}
     - target: {fileID: 919132149155446097, guid: 18498d87574024f49b5bc8fedc9336e8, type: 3}
       propertyPath: m_Name
-      value: Leopard2
+      value: Tenk
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 18498d87574024f49b5bc8fedc9336e8, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1393916160986794733, guid: 18498d87574024f49b5bc8fedc9336e8, type: 3}
       propertyPath: m_Materials.Array.data[0]
