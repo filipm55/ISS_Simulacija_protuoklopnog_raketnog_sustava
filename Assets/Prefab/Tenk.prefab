@@ -13,6 +13,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: b27a74c7df6d4f642b0b3245957d92a1, type: 2}
     - target: {fileID: -8679921383154817045, guid: 18498d87574024f49b5bc8fedc9336e8, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 18498d87574024f49b5bc8fedc9336e8, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 18498d87574024f49b5bc8fedc9336e8, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 18498d87574024f49b5bc8fedc9336e8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -183,11 +195,11 @@ BoxCollider:
     m_Bits: 0
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
-  m_ProvidesContacts: 0
+  m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 4, y: 3, z: 8}
-  m_Center: {x: 0, y: 1, z: -1}
+  m_Size: {x: 4, y: 2.400604, z: 7.596488}
+  m_Center: {x: 0, y: 1.2517895, z: -0.98296976}
 --- !u!195 &7215598788999414189
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -197,18 +209,18 @@ NavMeshAgent:
   m_GameObject: {fileID: 6954883412887146921}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 3.5
   m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
+  m_Acceleration: 0.7
+  avoidancePriority: 40
+  m_AngularSpeed: 60
+  m_StoppingDistance: 5
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 0
-  m_WalkableMask: 4294967295
+  m_Height: 0.3
+  m_BaseOffset: -0.5
+  m_WalkableMask: 1
   m_ObstacleAvoidanceType: 4
 --- !u!114 &7841677024722812885
 MonoBehaviour:
@@ -222,5 +234,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a0d5f86b5360b64587b83f24ba5d443, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  patrolRadius: 20
-  patrolTime: 3
+  patrolRadius: 70
+  patrolTime: 10
