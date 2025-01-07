@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2489783810974469297}
   - component: {fileID: 7375337548765109680}
   - component: {fileID: 136168842684345051}
+  - component: {fileID: 1380146481634526358}
   m_Layer: 9
   m_Name: Rocket_Launcher_Missile
   m_TagString: Untagged
@@ -181,6 +182,28 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!64 &1380146481634526358
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1558915690740613495}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 1
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -2525000155558681288, guid: 4311dac403f1e004db14392e31c92415, type: 3}
 --- !u!1 &4092872357349286730
 GameObject:
   m_ObjectHideFlags: 0
@@ -255,7 +278,7 @@ SphereCollider:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4294967295
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -293,7 +316,7 @@ MonoBehaviour:
   speed: 25
   collisionLayerMask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 0
   rocketExplosion: {fileID: 1764654978243476, guid: a98b15aa948478849b54661e4d9a317e, type: 3}
   projectileMesh: {fileID: 7375337548765109680}
   inFlightAudioSource: {fileID: 136168842684345051}
