@@ -94,6 +94,7 @@ namespace BigRookGames.Weapons
             if (Input.GetButtonDown("Fire1") && ((timeLastFired + shotDelay) <= Time.time) && isScoped)
             {
                 mainCamera.fieldOfView = normalFOV;
+                isScoped = false;
                 scopeOverlay.SetActive(false);
                 FireWeapon();
             }
