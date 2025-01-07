@@ -173,6 +173,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 18498d87574024f49b5bc8fedc9336e8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7841677024722812885}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 18498d87574024f49b5bc8fedc9336e8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 629301196295762731}
   m_SourcePrefab: {fileID: 100100000, guid: 18498d87574024f49b5bc8fedc9336e8, type: 3}
 --- !u!1 &6954883412887146921 stripped
 GameObject:
@@ -234,5 +237,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a0d5f86b5360b64587b83f24ba5d443, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  patrolRadius: 70
-  patrolTime: 10
+  patrolRadius: 20
+  patrolTime: 3
+--- !u!114 &629301196295762731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6954883412887146921}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c0128e05721ad04bbf73e26c06c08dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rb: {fileID: 0}
+  _size: 10
+  _speed: 10

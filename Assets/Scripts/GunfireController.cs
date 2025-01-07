@@ -20,10 +20,13 @@ namespace BigRookGames.Weapons
         public float shotDelay = .5f;
         public bool rotate = true;
         public float rotationSpeed = .25f;
-
+        public RaycastHit hit;
         // --- Projectile ---
         [Tooltip("The projectile gameobject to instantiate each time the weapon is fired.")]
-        public GameObject projectilePrefab;
+        //public GameObject projectilePrefab;
+        public homingScript missile;
+        [SerializeField]
+        private Transform target;
         [Tooltip("Sometimes a mesh will want to be disabled on fire. For example: when a rocket is fired, we instantiate a new rocket, and disable" +
             " the visible rocket attached to the rocket launcher")]
         public GameObject projectileToDisableOnFire;
@@ -64,10 +67,26 @@ namespace BigRookGames.Weapons
                 {
                     normalFOV = mainCamera.fieldOfView;
                     mainCamera.fieldOfView = scopedFOV;
+
                 }
                 else
                 {
                     mainCamera.fieldOfView = normalFOV;
+                }
+            }
+
+            if (Input.GetKeyDown(KeyCode.L))    // for standalone
+            {
+                Debug.Log("trace");
+                Vector3 mouse = Input.mousePosition;
+                Ray castPoint = Camera.main.ScreenPointToRay(mouse);
+                if (Physics.Raycast(castPoint, out hit, Mathf.Infinity))
+                {
+                    Debug.Log(hit.collider);
+                    if (hit.collider.gameObject.CompareTag("enemy"))
+                    {
+                        target = hit.collider.transform;
+                    }
                 }
             }
 
@@ -97,9 +116,10 @@ namespace BigRookGames.Weapons
             var flash = Instantiate(muzzlePrefab, muzzlePosition.transform);
 
             // --- Shoot Projectile Object ---
-            if (projectilePrefab != null)
+            if (missile != null) //if (projectilePrefab != null)
             {
-                GameObject newProjectile = Instantiate(projectilePrefab, muzzlePosition.transform.position, muzzlePosition.transform.rotation);
+                homingScript newProjectile = Instantiate(missile, muzzlePosition.transform.position, muzzlePosition.transform.rotation); //Instantiate(projectilePrefab, muzzlePosition.transform.position, muzzlePosition.transform.rotation);
+                newProjectile.target = target;
             }
 
             // --- Disable any gameobjects, if needed ---
