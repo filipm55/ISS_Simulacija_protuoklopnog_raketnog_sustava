@@ -50,7 +50,25 @@ public class homingScript : MonoBehaviour
     {
         missileActive = true;
         accelerateActiveTime = Time.time;
-        StartCoroutine(TargetTrackingDelay());
+        if (target != null)
+    {
+        Transform targetPoint = target.Find("TargetPoint");
+        if (targetPoint != null)
+        {
+            target = targetPoint;
+            Debug.Log("TargetPoint je uspješno postavljen kao cilj.");
+        }
+        else
+        {
+            Debug.LogWarning("Target nema dijete pod nazivom 'TargetPoint'!");
+        }
+    }
+        else
+    {
+        Debug.LogWarning("Target nije postavljen!");
+    }
+
+    StartCoroutine(TargetTrackingDelay());
     }
 
     IEnumerator TargetTrackingDelay()
