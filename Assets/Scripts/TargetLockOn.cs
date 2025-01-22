@@ -15,10 +15,9 @@ public class TargetLockOn : MonoBehaviour
 
     void Update()
     {
-        //provjera je li tenk unisten
         if (isLocked && lockedTarget == null)
         {
-            UnlockTarget(); // Resetiraj aim
+            UnlockTarget(); 
         }
 
         if(scopeOverlay.activeInHierarchy){
@@ -39,19 +38,15 @@ public class TargetLockOn : MonoBehaviour
         {
             if (hit.collider.CompareTag("enemy"))
             {
-                //izracun gdje je centar tenka
                 Bounds colliderBounds = hit.collider.bounds;
                 Vector3 targetCenter = colliderBounds.center;
 
-                //dohvati tenk koji je trenutno vidljiv
                 aimedTarget = hit.transform;
 
-                //postavi aim na poziciju tenka
                 Vector3 screenPosition = scopeCamera.WorldToScreenPoint(targetCenter);
                 whiteAimRectangle.position = screenPosition;
                 whiteAimRectangle.gameObject.SetActive(true);
 
-                //zakljucaj/otkljucaj tenk pritiskom na tipku L
                 if (Input.GetKeyDown(KeyCode.L) && scopeOverlay.activeInHierarchy)
                 {
                     if (isLocked)
@@ -68,14 +63,13 @@ public class TargetLockOn : MonoBehaviour
         }
         else
         {
-            //ako nije aimano na nista
             aimedTarget = null;
             whiteAimRectangle.gameObject.SetActive(false);
         }
 
         if (isLocked && lockedTarget != null)
         {
-            if (lockedTarget.gameObject != null) // provjeri je li ciljani tenk jos uvijek postoji
+            if (lockedTarget.gameObject != null) 
             {
                 Bounds colliderBounds = lockedTarget.GetComponent<Collider>().bounds;
                 Vector3 targetCenter = colliderBounds.center;

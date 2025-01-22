@@ -4,20 +4,16 @@ using UnityEngine;
 
 public class RocketCamera : MonoBehaviour
 {
-    private Camera rocketCamera; // Nova kamera za praćenje rakete
-    private Camera mainCamera;  // Glavna kamera
+    private Camera rocketCamera; 
+    private Camera mainCamera;  
     private Camera launcherCamera;
     private bool followRocket = false;
 
     void Start()
     {
-
-        
-        // Pronađi glavnu kameru
         mainCamera = Camera.main;
 
         rocketCamera = GameObject.Find("RocketCamera").GetComponent<Camera>();
-        // Osiguraj da je raketna kamera neaktivna na početku
         if (rocketCamera != null)
         {
             rocketCamera.enabled = false;
@@ -26,39 +22,36 @@ public class RocketCamera : MonoBehaviour
 
     void Update()
     {
-        // Aktivacija/deaktivacija raketne kamere
-        if (Input.GetKeyDown(KeyCode.C)) // Tipka za prebacivanje (npr. 'C')
+        if (Input.GetKeyDown(KeyCode.C)) 
         {
             followRocket = !followRocket;
 
             if (followRocket)
             {
-                mainCamera.enabled = false; // Isključi glavnu kameru
+                mainCamera.enabled = false; 
                 if (rocketCamera != null)
                 {
-                    rocketCamera.enabled = true; // Uključi raketnu kameru
+                    rocketCamera.enabled = true; 
                 }
             }
             else
             {
                 if (rocketCamera != null)
                 {
-                    rocketCamera.enabled = false; // Isključi raketnu kameru
+                    rocketCamera.enabled = false; 
                 }
-                mainCamera.enabled = true; // Uključi glavnu kameru
+                mainCamera.enabled = true; 
             }
         }
 
-        // Ako kamera prati raketu, prilagodi joj poziciju i orijentaciju
         if (followRocket && rocketCamera != null)
         {
-            rocketCamera.transform.position = transform.position - transform.forward * 10 + Vector3.up * 5; // Prilagodba udaljenosti i visine
+            rocketCamera.transform.position = transform.position - transform.forward * 10 + Vector3.up * 5;
             rocketCamera.transform.LookAt(transform);
 
-            // Provjeri je li objekt uništen
             if (transform == null)
             {
-                StartCoroutine(ReturnToMainCameraAfterDelay(1f)); // Pokreni povratak nakon 1 sekunde <- ne radi 
+                StartCoroutine(ReturnToMainCameraAfterDelay(1f)); 
             }
         }
     }
@@ -69,11 +62,11 @@ public class RocketCamera : MonoBehaviour
 
         if (rocketCamera != null)
         {
-            rocketCamera.enabled = false; // Isključi raketnu kameru
+            rocketCamera.enabled = false;
         }
         if (mainCamera != null)
         {
-            mainCamera.enabled = true; // Uključi glavnu kameru
+            mainCamera.enabled = true; 
         }
         
     }

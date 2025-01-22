@@ -24,14 +24,13 @@ public class TenkMovement : MonoBehaviour
             Vector3 randomPosition = RandomNavMeshLocation(patrolRadius);
             navMeshAgent.SetDestination(randomPosition);
 
-            // Čekaj dok ne stigne ili ne prođe patrolTime
             yield return new WaitForSeconds(patrolTime);
         }
      }
 
      Vector3 RandomNavMeshLocation(float radius)
 {
-    for (int i = 0; i < 5; i++) // Pokušava 5 puta
+    for (int i = 0; i < 5; i++) 
     {
         Vector3 randomDirection = Random.insideUnitSphere * radius;
         randomDirection += transform.position;
@@ -42,7 +41,7 @@ public class TenkMovement : MonoBehaviour
         }
     }
     Debug.LogWarning("Failed to find valid NavMesh point.");
-    return transform.position; // ako u 5 pokusaja ne vrati novu lokaciju gdje treba ici vrati trenutnu poziciju
+    return transform.position; 
 }
 
     void OnCollisionEnter(Collision collision)
@@ -55,7 +54,6 @@ public class TenkMovement : MonoBehaviour
     }
     void DestroyTank()
     {
-        // Pokreni respawn prije uništenja
         if (tankSpawner != null)
         {
             tankSpawner.RespawnTank();
@@ -65,7 +63,7 @@ public class TenkMovement : MonoBehaviour
             Debug.LogWarning("No TankSpawner found in the scene!");
         }
 
-        Destroy(gameObject); // Uništi trenutni tenk
+        Destroy(gameObject); 
     }
 
 }

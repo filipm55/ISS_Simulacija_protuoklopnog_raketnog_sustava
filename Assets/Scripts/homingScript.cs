@@ -29,7 +29,6 @@ public class HomingScript : MonoBehaviour
     private float accelerateActiveTime = 0f;
 
 
-    // --- Script Variables ---
     private bool targetHit;
 
     void Start()
@@ -37,8 +36,6 @@ public class HomingScript : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         ActivateMissile();
     }
-
-    // Update is called once per frame
     void Update()
     {
         if (targetHit) return;
@@ -92,7 +89,6 @@ public class HomingScript : MonoBehaviour
 
         if (targetTracking)
             transform.rotation = Quaternion.RotateTowards(transform.rotation, guideRotation, turnRate * Time.deltaTime);
-        //Debug.Log("Missile Speed " + missileSpeed);
 
     }
 
@@ -111,21 +107,11 @@ public class HomingScript : MonoBehaviour
         }
     }
 
-    /*public IEnumerator SendHoming()
-    {
-        while (Vector3.Distance(target.transform.position, gameObject.transform.position) > 0.3f)
-        {
-            gameObject.transform.position += (target.transform.position - gameObject.transform.position).normalized * speed * Time.deltaTime;
-            gameObject.transform.LookAt(target.transform);
-            yield return null;
-        }
-    }*/
 
     private void OnCollisionEnter(Collision collision)
     {
 
         Instantiate(explosion, transform.position, transform.rotation);
-        // --- Destroy this object after 2 seconds. Using a delay because the particle system needs to finish ---
         Destroy(gameObject);
     }
 
