@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.AI;
 
-public class tenkMovement : MonoBehaviour
+public class TenkMovement : MonoBehaviour
 {
     public float patrolRadius = 20f;
     public float patrolTime = 3f;

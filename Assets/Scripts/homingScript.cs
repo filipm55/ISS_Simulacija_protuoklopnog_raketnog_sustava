@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class homingScript : MonoBehaviour
+public class HomingScript : MonoBehaviour
 {
     public Transform target;
     private float missileSpeed = 20f;
