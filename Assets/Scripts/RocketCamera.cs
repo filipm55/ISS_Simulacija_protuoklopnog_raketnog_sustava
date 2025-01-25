@@ -28,26 +28,32 @@ public class RocketCamera : MonoBehaviour
 
             if (followRocket)
             {
-                mainCamera.enabled = false; 
-                if (rocketCamera != null)
-                {
-                    rocketCamera.enabled = true; 
-                }
-            }
-            else
+                Destroy(rocketCamera.gameObject, 6f);
+            
+            if (rocketCamera != null)
             {
-                if (rocketCamera != null)
-                {
-                    rocketCamera.enabled = false; 
-                }
-                mainCamera.enabled = true; 
+                rocketCamera.enabled = true; // Uključi raketnu kameru
+                if (rocketCamera.GetComponent<AudioListener>() != null)
+                    rocketCamera.GetComponent<AudioListener>().enabled = true; // Omogući Audio Listener na raketnoj kameri
             }
+}
+else
+{
+    if (rocketCamera != null)
+    {
+        rocketCamera.enabled = false; // Isključi raketnu kameru
+        if (rocketCamera.GetComponent<AudioListener>() != null)
+            rocketCamera.GetComponent<AudioListener>().enabled = false; // Onemogući Audio Listener na raketnoj kameri
+    }
+
+    mainCamera.enabled = true; // Uključi glavnu kameru
+    if (mainCamera.GetComponent<AudioListener>() != null)
+        mainCamera.GetComponent<AudioListener>().enabled = true; // Omogući Audio Listener na glavnoj kameri
+}
         }
 
         if (followRocket && rocketCamera != null)
         {
-            rocketCamera.transform.position = transform.position - transform.forward * 10 + Vector3.up * 5;
-            rocketCamera.transform.LookAt(transform);
 
             if (transform == null)
             {
