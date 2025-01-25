@@ -33,27 +33,33 @@ public class RocketCamera : MonoBehaviour
 
             if (followRocket)
             {
-                mainCamera.enabled = false; // Isključi glavnu kameru
-                if (rocketCamera != null)
-                {
-                    rocketCamera.enabled = true; // Uključi raketnu kameru
-                }
-            }
-            else
+                Destroy(rocketCamera.gameObject, 6f);
+            
+            if (rocketCamera != null)
             {
-                if (rocketCamera != null)
-                {
-                    rocketCamera.enabled = false; // Isključi raketnu kameru
-                }
-                mainCamera.enabled = true; // Uključi glavnu kameru
+                rocketCamera.enabled = true; // Uključi raketnu kameru
+                if (rocketCamera.GetComponent<AudioListener>() != null)
+                    rocketCamera.GetComponent<AudioListener>().enabled = true; // Omogući Audio Listener na raketnoj kameri
             }
+}
+else
+{
+    if (rocketCamera != null)
+    {
+        rocketCamera.enabled = false; // Isključi raketnu kameru
+        if (rocketCamera.GetComponent<AudioListener>() != null)
+            rocketCamera.GetComponent<AudioListener>().enabled = false; // Onemogući Audio Listener na raketnoj kameri
+    }
+
+    mainCamera.enabled = true; // Uključi glavnu kameru
+    if (mainCamera.GetComponent<AudioListener>() != null)
+        mainCamera.GetComponent<AudioListener>().enabled = true; // Omogući Audio Listener na glavnoj kameri
+}
         }
 
         // Ako kamera prati raketu, prilagodi joj poziciju i orijentaciju
         if (followRocket && rocketCamera != null)
         {
-            rocketCamera.transform.position = transform.position - transform.forward * 10 + Vector3.up * 5; // Prilagodba udaljenosti i visine
-            rocketCamera.transform.LookAt(transform);
 
             // Provjeri je li objekt uništen
             if (transform == null)
